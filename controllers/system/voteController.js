@@ -7,6 +7,11 @@ const getvotes = tryCatchWrapper(async (req, res, next) => {
   return res.status(200).json({ votes: result });
 });
 
+const createmanyVotes = tryCatchWrapper(async (req, res, next) => {
+  let result = await db.vote.insertMany(req.body);
+  return res.status(200).json({ posts: result });
+});
+
 const createVote = tryCatchWrapper(async (req, res, next) => {
   let result = await db.vote.create(req.body);
   return res.status(200).json({ posts: result });
@@ -28,6 +33,7 @@ module.exports = {
   getvotes,
   getOnevote,
   createVote,
+  createmanyVotes,
   deletevote,
   updatevote,
 };

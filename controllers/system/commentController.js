@@ -2,6 +2,10 @@ const tryCatchWrapper = require("../../helpers/tryCatchWrapper");
 const _ = require("lodash");
 const { db } = require("../../models");
 
+const createManyComment = tryCatchWrapper(async (req, res, next) => {
+  let result = await db.Comment.insertMany(req.body);
+  return res.status(200).json({ Comments: result });
+});
 const createComment = tryCatchWrapper(async (req, res, next) => {
   let result = await db.Comment.create(req.body);
   return res.status(200).json({ Comments: result });
@@ -26,6 +30,7 @@ const updateComment = tryCatchWrapper(async (req, res, next) => {
 
 module.exports = {
   getComments,
+  createManyComment,
   getOneComment,
   deleteComment,
   updateComment,

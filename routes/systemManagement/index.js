@@ -12,6 +12,6 @@ router.use("/comment", commentRoutes);
 router.use("/submedic", submedicRoutes);
 router.use("/vote", voteRoutes);
 router.use("/user", userRoutes);
-router.use("/doctor", doctorRoutes);
+router.use("/docinfo", doctorRoutes);
 
 module.exports = router;

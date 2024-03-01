@@ -2,6 +2,7 @@ const express = require("express");
 const voteController = require("../../controllers/system/voteController");
 const router = express.Router();
 
+router.post("/createmany", voteController.createmanyVotes);
 router.post("/create", voteController.createVote);
 router.post("/get", voteController.getvotes);
 router.get("/get/:id", voteController.getOnevote);
